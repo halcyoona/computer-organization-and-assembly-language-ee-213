@@ -1,0 +1,8 @@
+In this blog, I am going to show you the step by step method to run masm on linux.let's start.
+
+First thing you have to do is to instal dosbox on linux  via command:
+
+sudo apt install dosbox
+
+That's it now you can run your masm program on linux.
+So, let me show you a demo of how to run the programs using dosbox.Click here 
