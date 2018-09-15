@@ -1,8 +1,56 @@
 In this blog, I am going to show you the step by step method to run masm on linux.let's start.
 
+Dosbox installation:
 First thing you have to do is to instal dosbox on linux  via command:
 
 sudo apt install dosbox
 
 That's it now you can run your masm program on linux.
-So, let me show you a demo of how to run the programs using dosbox.Click here 
+So, let me show you a demo of how to run the programs using dosbox.Click here https://github.com/halcyoona/coal-ee-213 
+to download masm folder in your system.
+
+Now run the dosbox by typing simple command in your terminal:
+dosbox
+
+Mount the location where the downloaded masm folder is available.My masm folder is in Documents.
+
+mount c /home/yourusername/Documents/masm
+
+When it is mounted and change your present working directory to C.To do this simple type this in dosbox:
+
+C: 
+
+Following will be the output in dosbox.
+
+To check directory is mounted correctly just type this command in dosbox.This will show you the list of files in directory.
+
+dir
+
+Following will be the output on screen.
+Along with these files you must see your hello.asm file in the list.That's the file that contains "Hello world" script.
+you can see this code.This code simply output "Hello World" on screen.
+Let assemble the code. To do this run this command in dosbox.
+
+masm hello;
+
+Following will be the output on screen.
+
+To link the file use following command.
+
+link hello;
+
+Following will be the output on screen.
+
+If there were no errors in assembling and linking then congratulations.Lets run the executable. The command is
+
+debug hello.exe
+
+Enter g after the hyphen(‘-‘) and enter.You are done,
+Once the output is displayed, enter q to quit.
+
+following will be the output on screen.
+
+
+
+
+ 
