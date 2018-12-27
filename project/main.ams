@@ -1,0 +1,11 @@
+Include Irvine32.inc
+.data
+	v dword 4
+.code
+	main proc
+	mov eax,v
+	call writeint
+	call crlf
+	exit
+	main endp
+	End main
