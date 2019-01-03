@@ -1,8 +1,7 @@
-# Project-Sapphire
-AsmBreakout (Assembly MASM615)
+# Project
+Breakout (Assembly MASM615)
 
 ### Team Member
-* Zerk Shaban
-* Syed Owais Ali Chishti
-* Shaleem John
-* Faisal Usman
+* Mehmood Munir (Halcyoona)
+* M.Ahsan 
+* Iqra Fakhar
