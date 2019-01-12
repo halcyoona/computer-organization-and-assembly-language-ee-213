@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt -f install
+sudo apt install nasm
+
+wget http://download.opensuse.org/repositories/home:/Dman95/xUbuntu_16.10/amd64/sasm_3.9.0_amd64.deb
+
+sudo dpkg -i sasm_3.9.0_amd64.deb
