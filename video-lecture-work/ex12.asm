@@ -1,4 +1,4 @@
-sorting a list of ten numbers using bubble sort
+;sorting a list of ten numbers using bubble sort
 
 [org 0x0100]
 
