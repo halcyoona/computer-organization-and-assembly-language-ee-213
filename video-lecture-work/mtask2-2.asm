@@ -26,7 +26,7 @@ mytask: 	push bp
 
 			mov ax, [bp+4]					;load line number as parameter
 			mov bx, 70 						;use column number 70
-			mov word [bp-2]					;initialize local variables
+			mov word [bp-2], 0				;initialize local variables
 
 
 printagain:	push ax							;line number
@@ -117,7 +117,7 @@ initpcb:
 			mov si, [nextpcb]			;read this pcb index
 			mov cl, 9
 			shl si, cl 					;multiply by 512
-			add si, 256*2*stack 		;end of stack for this thread
+			add si, 256*2+stack 		;end of stack for this thread
 			mov ax, [bp+4] 				;read parameter for subroutine
 			sub si, 2 					;decrement thread stack pointer
 			mov [si], ax 				;pushing param on thread stack
@@ -157,27 +157,27 @@ timer: 		push ds
 			shl bx, 1
 			shl bx, 1						;multiply by 32 for pcb start
 			
-			mov [pcb+bx+0]					;save ax of current pcb
-			mov [pcb+bx+4]					;save cx of current pcb
-			mov [pcb+bx+6]					;save dx of current pcb
-			mov [pcb+bx+8]					;save si of current pcb
-			mov [pcb+bx+10]					;save di of current pcb
-			mov [pcb+bx+12]					;save bp of current pcb
-			mov [pcb+bx+24]					;save es of current pcb
+			mov [pcb+bx+0], ax				;save ax of current pcb
+			mov [pcb+bx+4], cx				;save cx of current pcb
+			mov [pcb+bx+6], dx				;save dx of current pcb
+			mov [pcb+bx+8], si				;save si of current pcb
+			mov [pcb+bx+10], di				;save di of current pcb
+			mov [pcb+bx+12], bp				;save bp of current pcb
+			mov [pcb+bx+24], es				;save es of current pcb
 			
 
 			pop ax 							;read original value of bx from stack in ax
-			mov [pcb+bx+2]					;save bx of current pcb
-			pop ax							read original value of ds from stack in ax
-			mov [pcb+bx+20]					;save ds of current pcb
-			pop ax							read original value of ip from stack in ax
-			mov [pcb+bx+16]					;save ip of current pcb
-			pop ax							read original value of cs from stack in ax
-			mov [pcb+bx+18]					;save cs of current pcb
+			mov [pcb+bx+2], ax				;save bx of current pcb
+			pop ax							;read original value of ds from stack in ax
+			mov [pcb+bx+20], ax				;save ds of current pcb
+			pop ax							;read original value of ip from stack in ax
+			mov [pcb+bx+16], ax				;save ip of current pcb
+			pop ax							;read original value of cs from stack in ax
+			mov [pcb+bx+18], ax				;save cs of current pcb
 			pop ax							;read original value of flags from stack in ax
-			mov [pcb+bx+26]					;save flags of current pcb
-			mov [pcb+bx+22]					;save ss of current pcb
-			mov [pcb+bx+14]					;save sp of current pcb
+			mov [pcb+bx+26], ax				;save flags of current pcb
+			mov [pcb+bx+22], ss				;save ss of current pcb
+			mov [pcb+bx+14], sp				;save sp of current pcb
 			
 			mov bx, [pcb+bx+28]				;read next pcb of this current pcb
 			mov [current], bx 				;update current to new pcb
@@ -200,7 +200,7 @@ timer: 		push ds
 
 
 
- 			mo al, 0x20						;send EOI to PIC 
+ 			mov al, 0x20						;send EOI to PIC 
  			out 0x20, al 
 
 			mov cx, [pcb+bx+0]				;read ax of new process
@@ -212,7 +212,7 @@ timer: 		push ds
  
 
  start: 	xor ax, ax
- 			mo es, ax 						;point es to IVT base
+ 			mov es, ax 						;point es to IVT base
 
  			mov ax, 1100
  			out 0x40, al
