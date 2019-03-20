@@ -74,7 +74,7 @@ start:
 			mov [oldisr+2], ax
 			cli							;disable interrupt
 			mov word [es: 9*4], kbisr 	;store offset at n*4
-			mov word [es:9*4+2], cs 			;store segment at n*4+2
+			mov word [es:9*4+2], cs 	;store segment at n*4+2
 			sti 						;enable interrupts
 
 			mov dx, start  				;end of resident problem
