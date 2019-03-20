@@ -62,7 +62,7 @@ skipreset: 	mov bl, [cs:current]			;read index of current task
  			mov bx, ax 						;load start of task in bx
 
 
- 			mo al, 0x20						;send EOI to PIC 
+ 			mov al, 0x20						;send EOI to PIC 
  			out 0x20, al 
 
  			push word[cs:taskstatus+bx+8] 	;flag of new task
@@ -82,7 +82,7 @@ skipreset: 	mov bl, [cs:current]			;read index of current task
  			mov byte [current], 0 						;set current task index
 
  			xor ax, ax
- 			mo es, ax 									;point es to IVT base
+ 			mov es, ax 									;point es to IVT base
 
  			cli 
  			mov  word[es:8*4], timer
